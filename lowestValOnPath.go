@@ -13,7 +13,7 @@ import (
  * }
  */
 
-func lowestValOnPath(root *TreeNode, target *TreeNode, path map[int]*TreeNode) map[int]*TreeNode {
+func smallestValOnPath(root *TreeNode, target *TreeNode, path map[int]*TreeNode) map[int]*TreeNode {
 	if root == nil {
 		return path
 	}
@@ -22,18 +22,18 @@ func lowestValOnPath(root *TreeNode, target *TreeNode, path map[int]*TreeNode) m
 		return path
 	}
 	if root.Val < target.Val {
-		lowestValOnPath(root.Left, target, path)
+		smallestValOnPath(root.Left, target, path)
 	} else {
-		lowestValOnPath(root.Right, target, path)
+		smallestValOnPath(root.Right, target, path)
 	}
 	return path
 }
 
-func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+func smallestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	var pPath = make(map[int]*TreeNode)
 	var qPath = make(map[int]*TreeNode)
-	pPath = lowestValOnPath(root, p, pPath)
-	qPath = lowestValOnPath(root, q, qPath)
+	pPath = smallestValOnPath(root, p, pPath)
+	qPath = smallestValOnPath(root, q, qPath)
 
 	if len(qPath) < len(pPath) {
 		pPath, qPath = qPath, pPath
