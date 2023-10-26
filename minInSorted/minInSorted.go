@@ -14,6 +14,8 @@ func findMin(nums []int) int {
 	lp := 0
 	rp := len(nums) - 1
 
+	//
+
 	for lp <= rp {
 		med := (lp + rp) / 2
 
